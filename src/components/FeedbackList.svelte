@@ -1,14 +1,22 @@
 <script>
+	import { FeedbackStore } from './../stores.js'
 	import { fade, scale } from 'svelte/transition'
 	import FeedbackItem from './FeedbackItem.svelte'
+	// import { onMount, onDestroy } from 'svelte'
 
-	export let feedback = []
+	// let feedback = []
 
-	console.log(feedback)
+	// const unsubscribe = FeedbackStore.subscribe((data) => (feedback = data))
+
+	// onMount(() => {})
+
+	// onDestroy(() => {
+	// 	unsubscribe( )
+	// })
 </script>
 
-{#each feedback as fb (fb.id)}
+{#each $FeedbackStore as fb (fb.id)}
 	<div in:scale out:fade={{ duration: 500 }}>
-		<FeedbackItem item={fb} on:delete-feedback />
+		<FeedbackItem item={fb} />
 	</div>
 {/each}
